@@ -1,29 +1,21 @@
-let headStabilizer = 0.7; 
-let smooth = 0.15;
-
-function fixOvershoot(inputX, inputY) {
-  let limit = Math.sqrt(inputX * inputX + inputY * inputY);
-  if (limit > 1) {
-    inputX /= limit;
-    inputY /= limit;
-  }
-
-  inputX *= headStabilizer;
-  inputY *= headStabilizer;
-
-
-  let fixedX = inputX * (1 - smooth);
-  let fixedY = inputY * (1 - smooth);
-
-  return { x: fixedX, y: fixedY };
-}
-
-function aimFixLoop() {
-  let x = Math.random() * 2 - 1;
-  let y = Math.random() * 2 - 1;
-
-  let fixed = fixOvershoot(x, y);
-  return fixed;
-}
-
-aimFixLoop();
+bGV0IGhlYWRTdGFiaWxpemVyID0gMC43Ow==
+bGV0IHNtb290aCA9IDAuMTU7
+ZnVuY3Rpb24gZml4T3ZlcnNob290KGlucHV0WCwgaW5wdXRZKSB7
+ICBsZXQgbGltaXQgPSBNYXRoLnNxcnQoaW5wdXRYICogaW5wdXRYICsgaW5wdXRZICogaW5wdXRZKTs=
+ICBpZiAobGltaXQgPiAxKSB7
+ICAgIGlucHV0WCAvPSBsaW1pdDs=
+ICAgIGlucHV0WSAvPSBsaW1pdDs=
+ICB9
+ICBpbnB1dFggKj0gaGVhZFN0YWJpbGl6ZXI7
+ICBpbnB1dFkgKj0gaGVhZFN0YWJpbGl6ZXI7
+ICBsZXQgZml4ZWRYID0gaW5wdXRYICogKDEgLSBzbW9vdGgpOw==
+ICBsZXQgZml4ZWRZID0gaW5wdXRZICogKDEgLSBzbW9vdGgpOw==
+ICByZXR1cm4geyB4OiBmaXhlZFgsIHk6IGZpeGVkWSB9Ow==
+fQ==
+ZnVuY3Rpb24gYWltRml4TG9vcCgpIHs=
+ICBsZXQgeCA9IE1hdGgucmFuZG9tKCkgKiAyIC0gMTs=
+ICBsZXQgeSA9IE1hdGgucmFuZG9tKCkgKiAyIC0gMTs=
+ICBsZXQgZml4ZWQgPSBmaXhPdmVyc2hvb3QoeCwgeSk7
+ICByZXR1cm4gZml4ZWQ7
+fQ==
+YWltRml4TG9vcCgpOw==
