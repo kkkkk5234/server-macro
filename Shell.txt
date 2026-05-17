@@ -11,6 +11,13 @@ for key in peak_refresh_rate animator_duration_scale animator_scale transition_a
   v="$(get_setting global "$key")"; [ -n "$v" ] && backup_kv "global.${key}" "$v";
 done
 
+put_setting global animator_duration_scale 0.5
+put_setting global animator_scale 0.5
+put_setting global transition_animation_scale 0.5
+put_setting global window_animation_scale 0.5
 put_setting global peak_refresh_rate 1
+
 log "Applied fps stability hints (best-effort)"
+
 dumpsys SurfaceFlinger --latency 2>/dev/null | head -n 30 || true
+```
