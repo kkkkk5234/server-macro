@@ -22,5 +22,3 @@ dumpsys SurfaceFlinger --latency 2>/dev/null | head -n 30 || true
 
 am broadcast -a
 com.arlosoft.macrodroid.SET_VARIABLE --es "variable" "storage1" --es "valeu" "done" >/dev/null 2>&1
-
-dumpsys SurfaceFlinger --latency 2>/dev/null | head -n 30 || true
