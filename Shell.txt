@@ -15,9 +15,12 @@ put_setting global animator_duration_scale 0.5
 put_setting global animator_scale 0.5
 put_setting global transition_animation_scale 0.5
 put_setting global window_animation_scale 0.5
-put_setting global peak_refresh_rate 1
+put_setting global peak_refresh_rate 120.0
 
 log "Applied fps stability hints (best-effort)"
+dumpsys SurfaceFlinger --latency 2>/dev/null | head -n 30 || true
+
+am broadcast -a
+com.arlosoft.macrodroid.SET_VARIABLE --es "variable" "storage1" --es "valeu" "done" >/dev/null 2>&1
 
 dumpsys SurfaceFlinger --latency 2>/dev/null | head -n 30 || true
-```
