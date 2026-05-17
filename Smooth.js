@@ -1,21 +1,13 @@
-bGV0IGhlYWRTdGFiaWxpemVyID0gMC43Ow==
-bGV0IHNtb290aCA9IDAuMTU7
-ZnVuY3Rpb24gZml4T3ZlcnNob290KGlucHV0WCwgaW5wdXRZKSB7
-ICBsZXQgbGltaXQgPSBNYXRoLnNxcnQoaW5wdXRYICogaW5wdXRYICsgaW5wdXRZICogaW5wdXRZKTs=
-ICBpZiAobGltaXQgPiAxKSB7
-ICAgIGlucHV0WCAvPSBsaW1pdDs=
-ICAgIGlucHV0WSAvPSBsaW1pdDs=
-ICB9
-ICBpbnB1dFggKj0gaGVhZFN0YWJpbGl6ZXI7
-ICBpbnB1dFkgKj0gaGVhZFN0YWJpbGl6ZXI7
-ICBsZXQgZml4ZWRYID0gaW5wdXRYICogKDEgLSBzbW9vdGgpOw==
-ICBsZXQgZml4ZWRZID0gaW5wdXRZICogKDEgLSBzbW9vdGgpOw==
-ICByZXR1cm4geyB4OiBmaXhlZFgsIHk6IGZpeGVkWSB9Ow==
-fQ==
-ZnVuY3Rpb24gYWltRml4TG9vcCgpIHs=
-ICBsZXQgeCA9IE1hdGgucmFuZG9tKCkgKiAyIC0gMTs=
-ICBsZXQgeSA9IE1hdGgucmFuZG9tKCkgKiAyIC0gMTs=
-ICBsZXQgZml4ZWQgPSBmaXhPdmVyc2hvb3QoeCwgeSk7
-ICByZXR1cm4gZml4ZWQ7
-fQ==
-YWltRml4TG9vcCgpOw==
+TAG="shizuku_gaming_fps"
+STORE="/data/local/tmp/${TAG}_backup"
+BK="${STORE}/kv_backup.txt"
+
+[ -f "$BK" ] || { echo "[${TAG}] No backup."; exit 0; }
+
+while IFS='=' read -r k v; do
+  [ -z "$k" ] && continue
+  ns="${k%%.*}"; key="${k#*.}"
+  settings put "$ns" "$key" "$v" >/dev/null 2>&1 || true
+done < "$BK"
+
+echo "[${TAG}] reset done"
