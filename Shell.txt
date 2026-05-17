@@ -1,0 +1,3 @@
+settings put system peak_refresh_rate 120
+
+settings put system min_refresh_rate 120
