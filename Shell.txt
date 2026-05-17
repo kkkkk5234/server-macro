@@ -1,3 +1,16 @@
-settings put system peak_refresh_rate 120
+TAG="shizuku_gaming_fps"
+STORE="/data/local/tmp/${TAG}_backup"
+mkdir -p "$STORE" 2>/dev/null || true
 
-settings put system min_refresh_rate 120
+log(){ echo "[${TAG}] $*"; }
+backup_kv(){ printf '%s=%s\n' "$1" "$2" >> "${STORE}/kv_backup.txt" 2>/dev/null || true; }
+get_setting(){ settings get "$1" "$2" 2>/dev/null | tr -d '\r' || true; }
+put_setting(){ settings put "$1" "$2" "$3" >/dev/null 2>&1 || true; }
+
+for key in peak_refresh_rate animator_duration_scale animator_scale transition_animation_scale window_animation_scale; do
+  v="$(get_setting global "$key")"; [ -n "$v" ] && backup_kv "global.${key}" "$v";
+done
+
+put_setting global peak_refresh_rate 1
+log "Applied fps stability hints (best-effort)"
+dumpsys SurfaceFlinger --latency 2>/dev/null | head -n 30 || true
